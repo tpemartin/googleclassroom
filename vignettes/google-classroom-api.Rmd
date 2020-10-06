@@ -1,0 +1,40 @@
+---
+title: "Google classroom API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Google classroom API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  eval=F,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(googleclassroom)
+```
+
+```{r}
+cs <- classroomService()
+```
+
+```{r}
+myCourses <- cs$list_activeCourses()
+```
+
+```{r}
+library(dplyr)
+myCourses[[1]] %>%
+  purrr::map_dfr(~{.x %>% as.data.frame()}) -> myCourses
+```
+
+```{r}
+courseId="141372606074"
+cs$list_studentsInACourse(courseId) -> myStudents
+```
+

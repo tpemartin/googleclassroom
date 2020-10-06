@@ -1,0 +1,25 @@
+{
+    "id": "F1CDD986",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1600934924060.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {
+        "id": "fb483788b10f4743873b13729e0b8229",
+        "name": "response",
+        "title": "response"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 0,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1600934924060,
+    "read_only": false,
+    "read_only_alternatives": []
+}

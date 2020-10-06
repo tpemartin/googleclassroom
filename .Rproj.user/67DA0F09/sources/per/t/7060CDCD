@@ -1,0 +1,32 @@
+{
+    "id": "7060CDCD",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1600363341822.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "myCourses",
+        "caption": "myCourses",
+        "totalObservations": 13,
+        "displayedObservations": 13,
+        "variables": 19,
+        "cacheKey": "7049CE3D",
+        "object": "myCourses",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=myCourses&cache_key=7049CE3D&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 128,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1600363341822,
+    "read_only": false,
+    "read_only_alternatives": []
+}

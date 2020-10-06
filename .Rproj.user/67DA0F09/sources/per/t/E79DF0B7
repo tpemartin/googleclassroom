@@ -1,0 +1,25 @@
+{
+    "id": "E79DF0B7",
+    "path": "~/Github/googleclassroom/R/googleclassroom.R",
+    "project_path": "R/googleclassroom.R",
+    "type": "r_source",
+    "hash": "2674421474",
+    "contents": "",
+    "dirty": false,
+    "created": 1600323384702.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "81,18",
+        "scrollLine": "80"
+    },
+    "folds": "28|31|38|0|\n",
+    "lastKnownWriteTime": 1601307078,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1601307078341,
+    "read_only": false,
+    "read_only_alternatives": []
+}
