@@ -10,7 +10,10 @@ classroomService <- function(){
     list_activeCourses=list_activeCourses,
     list_studentsInACourse=list_studentsInACourse,
     list_teachersInACourse=list_teachers,
-    create_attendance=create_attendance
+    create_attendance=create_attendance,
+    list_courseworksAsDataframe=list_courseworksAsDataframe,
+    get_studentSubmissionForACourseWork=get_studentSubmissionForACourseWork,
+    download_studentRmds=download_studentRmds
   )
 
 }
