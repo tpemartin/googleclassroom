@@ -1,3 +1,0 @@
-"0","library(dplyr)"
-"0","myCourses[[1]] %>%"
-"0","  purrr::map_dfr(~{.x %>% as.data.frame()}) -> myCourses"
