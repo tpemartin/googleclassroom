@@ -29,7 +29,11 @@ for (.x in seq_along(df_studentSubmissions$attachments)) {
     overwrite = T
   )
 }
-
+  list(
+    list.files(destPath)
+  ) -> listOfDownloadedRmds
+  names(listOfDownloadedRmds) <- title
+  invisible(listOfDownloadedRmds)
 }
 #' Get student submission for a course work
 #'
