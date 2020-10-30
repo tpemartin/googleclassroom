@@ -13,7 +13,8 @@ classroomService <- function(){
     create_attendance=create_attendance,
     list_courseworksAsDataframe=list_courseworksAsDataframe,
     get_studentSubmissionForACourseWork=get_studentSubmissionForACourseWork,
-    download_studentRmds=download_studentRmds
+    download_studentRmds=download_studentRmds,
+    get_profile=get_profile
   )
 
 }
@@ -157,4 +158,9 @@ list_studentsInACourse <- function(courseId){
     firstPage=newPage
   }
   students
+}
+get_profile <- function(){
+  requestPhrase <- glue::glue("GET https://classroom.googleapis.com/v1/userProfiles/me")
+  get_profileFun <- classroom_apiFunctional(requestPhrase)
+  get_profileFun()
 }
