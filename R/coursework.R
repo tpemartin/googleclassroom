@@ -102,10 +102,13 @@ list_courseworksAsDataframe <- function(courseId)
       data.frame(
         title=.x$title,
         id=.x$id,
-        dueDate={.x$dueDate %>% unlist() %>% paste(collapse="-")},
-        dueTime={.x$dueTime %>% unlist() %>%
-          stringr::str_pad(width=2, side="left", pad="0") %>%
-          paste0(":00:00")}
+        dueDate={.x$dueDate %>% unlist() %>% as.character() %>% paste(collapse="-")},
+        dueTime={
+          .x$dueTime%>% unlist() %>% as.character()  -> dueTime
+          dueTime
+          timeTemplate <- c("00","00","00")
+          timeTemplate[seq(dueTime)] <- dueTime
+          timeTemplate %>% paste(collapse = ":")}
         )
     }) %>%
     mutate(
