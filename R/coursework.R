@@ -111,6 +111,9 @@ list_courseworksAsDataframe <- function(courseId)
           timeTemplate %>% paste(collapse = ":")}
         )
     }) %>%
+    filter(
+      dueDate!=""
+    ) %>%
     mutate(
       due=lubridate::ymd_hms(paste0(dueDate,"T",dueTime,"Z")),
       due=lubridate::with_tz(due, tzone='Asia/Taipei')
