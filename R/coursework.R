@@ -13,9 +13,11 @@ download_studentRmds <- function(title, df_studentSubmissions)
     stringr::str_remove_all("\\s")
   if(!dir.exists(destPath)) dir.create(destPath, recursive = T)
   require(googledrive)
-
+cat('downloading:\n')
+problemIndex <- c()
 for (.x in seq_along(df_studentSubmissions$attachments)) {
   if (is.null(df_studentSubmissions$attachments[[.x]])) next
+  cat('.x= ', .x, "\n")
   filename <- paste(title,
     df_studentSubmissions[.x, ]$學號,
     sep = "_"
@@ -23,15 +25,24 @@ for (.x in seq_along(df_studentSubmissions$attachments)) {
     stringr::str_remove_all("\\s")
 
   filename <- paste0(filename, ".Rmd")
+  drivePath <- df_studentSubmissions[.x, ]$attachments[[1]]$driveFile$alternateLink
+  if(is.null(drivePath)) {
+    problemIndex <- c(problemIndex, .x)
+    next
+  }
   drive_download(
-    file = df_studentSubmissions[.x, ]$attachments[[1]]$driveFile$alternateLink,
+    file = drivePath,
     path = file.path(destPath, filename),
     overwrite = T
   )
 }
   list(
-    list.files(destPath)
-  ) -> listOfDownloadedRmds
+    failed_cases = df_studentSubmissions[problemIndex,],
+    success_downloads=list.files(destPath)
+  ) -> results
+  list(
+    results
+    ) -> listOfDownloadedRmds
   names(listOfDownloadedRmds) <- title
   invisible(listOfDownloadedRmds)
 }
