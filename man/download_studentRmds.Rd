@@ -4,12 +4,14 @@
 \alias{download_studentRmds}
 \title{Download student Rmd submissions}
 \usage{
-download_studentRmds(title, df_studentSubmissions)
+download_studentRmds(title, df_studentSubmissions, root = getwd())
 }
 \arguments{
 \item{title}{A character. The title of the course work. It will be used as a folder name for this course work}
 
 \item{df_studentSubmissions}{A data frame. Can be the return from get_studentSubmissionForACourseWork}
+
+\item{root}{A character of path under which Rmds will be downloaded to root/studentsSubmisstion/ folder}
 }
 \value{
 

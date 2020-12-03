@@ -2,14 +2,15 @@
 #'
 #' @param title A character. The title of the course work. It will be used as a folder name for this course work
 #' @param df_studentSubmissions A data frame. Can be the return from get_studentSubmissionForACourseWork
+#' @param root A character of path under which Rmds will be downloaded to root/studentsSubmisstion/ folder
 #'
 #' @return
 #' @export
 #'
 #' @examples none
-download_studentRmds <- function(title, df_studentSubmissions)
+download_studentRmds <- function(title, df_studentSubmissions, root=getwd())
 {
-  destPath = file.path("studentsSubmission", title) %>%
+  destPath = file.path(root, "studentsSubmission", title) %>%
     stringr::str_remove_all("\\s")
   if(!dir.exists(destPath)) dir.create(destPath, recursive = T)
   require(googledrive)
@@ -30,15 +31,16 @@ for (.x in seq_along(df_studentSubmissions$attachments)) {
     problemIndex <- c(problemIndex, .x)
     next
   }
+  toFilePath = file.path(destPath, filename)
   drive_download(
     file = drivePath,
-    path = file.path(destPath, filename),
+    path = toFilePath,
     overwrite = T
   )
 }
   list(
     failed_cases = df_studentSubmissions[problemIndex,],
-    success_downloads=list.files(destPath)
+    success_downloads=list.files(destPath, full.names = T)
   ) -> results
   list(
     results
@@ -79,7 +81,8 @@ get_studentSubmissionForACourseWork <- function(courseWorkId, roster)
           },
           submissionState={
             .x$submissionHistory[[loc_last]]$stateHistory$state
-          }
+          },
+          classroomCourseworkLink=.x[["alternateLink"]]
 
         )
       }) -> df_studentSubmissions
