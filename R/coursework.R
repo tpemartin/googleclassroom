@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples none
-download_studentRmds <- function(title, df_studentSubmissions, root=getwd())
+download_studentRmds <- function(title, df_studentSubmissions, root=getwd(), useRmdExtension=T)
 {
   destPath = file.path(root, "studentsSubmission", title) %>%
     stringr::str_remove_all("\\s")
@@ -25,7 +25,13 @@ for (.x in seq_along(df_studentSubmissions$attachments)) {
   ) %>%
     stringr::str_remove_all("\\s")
 
-  filename <- paste0(filename, ".Rmd")
+  filename <-
+    if(useRmdExtension){
+      paste0(filename, ".Rmd")
+    } else {
+      fileExtension <- stringr::str_extract(df_studentSubmissions[.x,]$attachments[[1]]$driveFile$title, "\\.[:alpha:]+$")
+      paste0(filename, fileExtension)
+    }
   drivePath <- df_studentSubmissions[.x, ]$attachments[[1]]$driveFile$alternateLink
   if(is.null(drivePath)) {
     problemIndex <- c(problemIndex, .x)
