@@ -14,7 +14,8 @@ classroomService <- function(){
     list_courseworksAsDataframe=list_courseworksAsDataframe,
     get_studentSubmissionForACourseWork=get_studentSubmissionForACourseWork,
     download_studentRmds=download_studentRmds,
-    get_profile=get_profile
+    get_profile=get_profile,
+    delete_aStudent=delete_aStudent
   )
 
 }
@@ -163,4 +164,10 @@ get_profile <- function(){
   requestPhrase <- glue::glue("GET https://classroom.googleapis.com/v1/userProfiles/me")
   get_profileFun <- classroom_apiFunctional(requestPhrase)
   get_profileFun()
+}
+
+delete_aStudent <- function(courseId, userId){
+  requestPhrase <- glue::glue("DELETE https://classroom.googleapis.com/v1/courses/{courseId}/students/{userId}")
+  delete_aStudentFun <- classroom_apiFunctional(requestPhrase)
+  delete_aStudentFun()
 }
